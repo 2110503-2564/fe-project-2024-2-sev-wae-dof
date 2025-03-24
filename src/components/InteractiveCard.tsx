@@ -22,7 +22,7 @@ export default function InteractiveCard({ children, contentName}: { children: Re
         <div className="w-full h-[300px] rounded-lg shadow-lg"
             onMouseOver={(e) => onCardMouseAction(e)}
             onMouseOut={(e) => onCardMouseAction(e)}>
-            {children} {/* รับลูกมาใส่ */}
+            {children}
         </div>
     );
 }

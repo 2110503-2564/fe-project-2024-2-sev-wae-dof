@@ -8,13 +8,16 @@ export interface ReservationItem {
     returnLocation:string
 }
 
-export interface CarItem{
-    id: string
-    model: string
-    picture:string
+export interface CampgroundItem{
+    _id: string
+    name: string
+    address:string
+    region:string
+    avgRating:number
+    tel:string
 }
 
-export interface CarJson {
+export interface CampgroundJson {
     count : number
-    data : CarItem[]
+    data : CampgroundItem[]
 }

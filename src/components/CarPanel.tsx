@@ -3,7 +3,7 @@ import {useReducer, useState} from 'react'
 import Link from "next/link";
 import ProductCard from "./ProductCard";
 import {useRef,useEffect } from "react";
-import getCars from "@/libs/getCars"
+import getCars from "@/libs/getCampgrounds"
 import { CarItem, CarJson } from '../../interfaces';
 
 
