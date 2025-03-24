@@ -1,12 +1,17 @@
-
+'use client'
+import React from 'react';
 import Image from 'next/image'
 import InteractiveCard from './InteractiveCard';
-export default function ProductCard({carName,imgSrc,onCompare}:{carName:string,imgSrc:string,onCompare?:Function}){
+import Rating from '@mui/material/Rating';
+
+export default function ProductCard({campgroundName,imgSrc,rating}:{campgroundName:string,imgSrc:string,rating:number}){
     function onCarSelected(){
-        alert("You Select "+carName);
+        alert("You Select "+campgroundName);
     }
+    
+    const [value, setValue] = React.useState<number>(rating);
     return(
-        <InteractiveCard contentName={carName}>
+        <InteractiveCard contentName={campgroundName}>
             <div className="w-full h-[70%] relative rounded-t-lg">
                 <Image src={imgSrc}
                 alt='Product Picture'
@@ -14,11 +19,18 @@ export default function ProductCard({carName,imgSrc,onCompare}:{carName:string,i
                 className="object-cover rounded-t-lg"
             />
             </div>
-            <div className="w-full h-[15%] p-[10px]">{carName}</div>
-            {
-                onCompare?<button className='block h-[10%] text-sm rounded-md bg-sky-600 hover:bg-indigo-600 mx-2 px-1 py-1 text-white shadow-sm'
-                onClick={(e)=>{e.stopPropagation();e.preventDefault();onCompare(carName)}}>Compare</button> : ''
-            }
+            <div className="w-full h-[15%] p-[10px]">{campgroundName}</div>
+            <div>
+                    {
+                        rating?<Rating
+                             name={campgroundName + " Rating"}
+                             id={campgroundName + " Rating"}
+                             readOnly
+                             value={value}
+                         />:' '
+                         
+                    }
+                </div>
         </InteractiveCard>
 
     )

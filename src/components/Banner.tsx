@@ -14,7 +14,7 @@ export default function Banner (){
 
     return (
         <div className={styles.banner} onClick={()=>{setState(index+1)}}>
-            <Image src={covers[index%3]} alt='cover'
+            <Image src={covers[index%1]} alt='cover'
             fill={true}
             objectFit='cover'/>
             <div className={styles.bannerText}>

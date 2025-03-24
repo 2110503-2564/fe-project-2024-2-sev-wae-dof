@@ -1,18 +1,18 @@
 import CarPanel from "@/components/CarPanel";
-import getCars from "@/libs/getCars";
-import CarCatalog from "@/components/CarCatalog";
+import getCampgrounds from "@/libs/getCampgrounds";
+import CampgroundCatalog from "@/components/CampgroundCatalog";
 import { Suspense } from "react";
 import { LinearProgress } from "@mui/material";
-import { CarJson } from "../../../../interfaces";
+import { CampgroundJson } from "../../../../interfaces";
 
 export default async function Car(){
-    const cars:CarJson = await getCars()
+    const campgrounds:CampgroundJson = await getCampgrounds()
 
     return(
         <main className="text-center p-5">
-            <h1 className="text-xl font-medium">Select Your Travel Partner</h1>
+            <h1 className="text-2xl font-medium">Campground List</h1>
             <Suspense fallback={<p>Loading ... <LinearProgress/></p>}>
-                <CarCatalog carJson={cars}/>
+                <CampgroundCatalog CampgroundJson={campgrounds}/>
             </Suspense>
 
         

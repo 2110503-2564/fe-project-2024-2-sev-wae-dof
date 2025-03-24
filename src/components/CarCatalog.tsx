@@ -1,24 +1,37 @@
-import Link from "next/link";
-import ProductCard from "./ProductCard";
-import { CarItem, CarJson } from "../../interfaces";
+'use client'
+import React from 'react';
+import Image from 'next/image'
+import InteractiveCard from './InteractiveCard';
+import Rating from '@mui/material/Rating';
 
-export default async function CarCatalog({carJson}:{carJson:CarJson}) {
-    const carJsonReady = await carJson
+export default function ProductCard({campgroundName,rating}:{campgroundName:string,rating:number}){
+    function onCarSelected(){
+        alert("You Select "+campgroundName);
+    }
+    const [value, setValue] = React.useState<number>(rating);
     return(
-        <>
-        Explore {carJsonReady.count} models in our catalog
-        <div style={{margin:"20px" ,display:"flex",flexDirection:"row",
-                  flexWrap:"wrap", justifyContent:"space-around", alignContent:"space-around"
-                }}>
-                    {   
-                        carJsonReady.data.map((carItem:CarItem)=>(
-                            <Link href={`/campground/${carItem.id}`} className='w-1/5'>
-                            <ProductCard carName={carItem.model} imgSrc= {carItem.picture}
-                            />
-                            </Link>
-                        ))
+        <InteractiveCard contentName={campgroundName}>
+            <div className="w-full h-[70%] relative rounded-t-lg">
+                {/* <Image src={imgSrc}
+                alt='Product Picture'
+                fill={true}
+                className="object-cover rounded-t-lg"
+            /> */}
+            </div>
+            <div className="w-full h-[15%] p-[10px]">{campgroundName}</div>
+            <div>
+                    {
+                        rating?<Rating
+                             name={campgroundName + " Rating"}
+                             id={campgroundName + " Rating"}
+                             readOnly
+                             value={value}
+                         />:' '
+                         
                     }
-                    </div>
-        </>
+                </div>
+        </InteractiveCard>
+
     )
+
 }
