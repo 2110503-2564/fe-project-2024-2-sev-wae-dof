@@ -57,7 +57,7 @@ export default function SignIn() {
       </form>
       <p className="mt-4 text-black">
         Don't have an account?{" "}
-        <a href="/api/auth/signup" className="text-blue-400 hover:underline">
+        <a href="/signup" className="text-blue-400 hover:underline">
           Sign up here
         </a>
       </p>
