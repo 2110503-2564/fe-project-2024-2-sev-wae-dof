@@ -36,6 +36,10 @@ export const authOptions:AuthOptions = {
             }
           })
     ],
+    pages: {
+      signIn: "/api/auth/signin", // ใช้ Custom Page
+      error: "/api/auth/signin", // ถ้ามี Error ให้กลับมาที่เดิม
+    },
     session: {strategy:"jwt"},
     callbacks: {
         async jwt({token,user}){
