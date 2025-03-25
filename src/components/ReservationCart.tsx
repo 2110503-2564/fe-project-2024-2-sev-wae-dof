@@ -40,7 +40,11 @@ export default function ReservationCart() {
                                 booking?.data.map((reservationItem) => (
                                     <div className='bg-slate-200 rounded px-5 mx-5 py-2 my-2'
                                         key={reservationItem._id}>
-                                            <div className="text-md">{reservationItem.campground?.name}</div>
+                                            <div className="text-md flex flex-row justify-between"><div>{reservationItem.campground?.name}</div><div><div>
+                                                <Link key={reservationItem._id} href={`/cart/${reservationItem._id} `}>
+                                                    <div className="hover:underline">Edit</div>
+                                                </Link>
+                                            </div></div></div>
                                             <div className="text-sm">Check-in :{dayjs(reservationItem.campingDate).format('DD/MM/YYYY')}</div>
                                             <div className="text-sm">Duration : {reservationItem.nights} days</div>
                                             <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2 
@@ -70,11 +74,7 @@ export default function ReservationCart() {
                                             >
                                                 Remove from Booking
                                             </button>
-                                            <div>
-                                                <Link key={reservationItem._id} href={`/cart/${reservationItem._id}`}>
-                                                    Edit
-                                                </Link>
-                                            </div>
+                                            
                                     </div>
                                 ))
 

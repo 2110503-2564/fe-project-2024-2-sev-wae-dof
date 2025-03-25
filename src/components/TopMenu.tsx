@@ -16,7 +16,7 @@ export default function TopMenu() {
             <TopMenuItem title='Home' pageRef='/' />
             <TopMenuItem title='About' pageRef='/about' />
             <TopMenuItem title='Campgrounds' pageRef='/campground' />
-            <TopMenuItem title='Your Bookings' pageRef='/cart' />
+            <TopMenuItem title={session?.user.role==='admin' ? 'View All Bookings' : 'Your Bookings'} pageRef='/cart' />
 
             <div className='flex flex-row absolute right-0 h-full'>
                 <TopMenuItem title='Book Now' pageRef='/reservations' />
