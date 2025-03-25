@@ -4,6 +4,7 @@ import TopMenuItem from './TopMenuItem';
 import Link from 'next/link';
 import { getServerSession } from "next-auth";
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import DropdownMenu from './DropdownMenu';
 
 export default async function  TopMenu(){
 
@@ -23,12 +24,13 @@ export default async function  TopMenu(){
             <div className='flex flex-row absolute right-0 h-full'>
             <TopMenuItem title='Book Now' pageRef='/reservations'/>
             
-            {
-                session? <Link href="/api/auth/signout">
-                   <div className='flex items-center h-full px-2 text-white text-sm'> Sign-Out of {session?.user?.name} </div>
-                </Link>
-                :<Link href="/api/auth/signin"><div className='flex items-center h-full px-2 text-white text-sm'>Sign-In</div></Link>
-            }
+            {session ? (
+                    <DropdownMenu session={session} /> 
+                ) : (
+                    <Link href="/api/auth/signin">
+                        <div className="flex items-center h-full px-2 text-white text-sm cursor-pointer">Sign-In</div>
+                    </Link>
+                )}
             </div>
 
 

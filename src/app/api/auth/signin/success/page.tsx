@@ -11,6 +11,7 @@ export default function SignInSuccess(){
         if (status === "authenticated") { 
           const timer = setTimeout(() => {
             router.push("/campground");
+            router.refresh();
           }, 1500);
     
           return () => clearTimeout(timer);
