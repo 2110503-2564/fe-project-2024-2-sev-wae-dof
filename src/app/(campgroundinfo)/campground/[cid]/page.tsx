@@ -30,7 +30,7 @@ export default async function CarDetailPage({params}:{params:{cid:string}}){
                 <div className='text-md mx-5'>Address: {campgroundDetail.data.address}</div>
                 <div className='text-md mx-5'>Tel: {campgroundDetail.data.tel}</div>
                 
-                <Link href={`/booking?id=${params.cid}&model=${campgroundDetail.data.model}`}>
+                <Link href={`/reservations?id=${campgroundDetail.data.id}`}>
                 <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2 
             text-white shadow-sm">Make Reservation</button>
                 </Link>
