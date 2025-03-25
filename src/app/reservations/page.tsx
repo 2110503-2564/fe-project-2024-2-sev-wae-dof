@@ -2,12 +2,8 @@
 import DateReserve from "@/components/DateReserve";
 import dayjs, { Dayjs } from "dayjs";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/redux/store";
-import { ReservationItem } from "../../../interfaces";
-import { addReservation } from "@/redux/features/BookingSlice";
 import { MenuItem } from "@mui/material";
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import { CampgroundJson } from "../../../interfaces";
 import { useEffect } from "react";
 import getCampgrounds from "@/libs/getCampgrounds";
@@ -18,8 +14,6 @@ import booking from "@/libs/createBooking";
 import { useSession } from "next-auth/react";
 
 export default function Reservations(){
-
-    const dispatch = useDispatch<AppDispatch>()
     const [campgrounds, setCampgrounds] = useState<CampgroundJson | null>(null);
     const [loading, setLoading] = useState(true);
 
@@ -38,13 +32,7 @@ export default function Reservations(){
 
     const makeReservation = () => {
         if(session?.user.token && pickupCampgroung && checkInDate && checkOutDate){
-            const item:ReservationItem = {
-                campgroundId:pickupCampgroung,
-                nights : checkOutDate.diff(checkInDate,'day'),
-                campingDate : dayjs(checkInDate).format('YYYY/MM/DD'),
-            }
             booking(session.user.token,pickupCampgroung,dayjs(checkInDate).format('YYYY/MM/DD'),checkOutDate.diff(checkInDate,'day'));
-            dispatch(addReservation(item))
         }
 
     }

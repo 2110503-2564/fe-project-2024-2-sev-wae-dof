@@ -1,7 +1,9 @@
 export interface ReservationItem {
-    campgroundId:string
+    _id:string
+    campground:CampgroundItem
     campingDate:string
     nights:number
+    user:User
 }
 
 export interface CampgroundItem{
@@ -17,6 +19,11 @@ export interface CampgroundItem{
 export interface CampgroundJson {
     count : number
     data : CampgroundItem[]
+}
+
+export interface BookingJson {
+    count : number
+    data : ReservationItem[]
 }
 
 export interface Rating {
@@ -37,3 +44,10 @@ export interface CampgroundItemAdmin {
     picture: string;
     createdAt: string;
   };
+
+export interface User {
+    _id: string;  
+    name: string;
+    email: string;
+  }
+  
