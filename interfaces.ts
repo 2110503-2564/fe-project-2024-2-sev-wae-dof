@@ -3,6 +3,7 @@ export interface ReservationItem {
     campground:CampgroundItem
     campingDate:string
     nights:number
+    user:User
 }
 
 export interface CampgroundItem{
@@ -43,3 +44,10 @@ export interface CampgroundItemAdmin {
     picture: string;
     createdAt: string;
   };
+
+export interface User {
+    _id: string;  
+    name: string;
+    email: string;
+  }
+  

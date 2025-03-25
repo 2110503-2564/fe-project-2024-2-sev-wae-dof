@@ -47,6 +47,7 @@ export default function ReservationCart() {
                                             </div></div></div>
                                             <div className="text-sm">Check-in :{dayjs(reservationItem.campingDate).format('DD/MM/YYYY')}</div>
                                             <div className="text-sm">Duration : {reservationItem.nights} days</div>
+                                            <div className="text-sm">User : {reservationItem.user.name}</div>
                                             <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2 
                                             text-white shadow-sm" 
                                         
