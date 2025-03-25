@@ -11,7 +11,7 @@ export default async function booking(token:string,campgroundId:string,checkin:s
         })
     })
     if(!response.ok){   
-        throw new Error("Failed to log-in")
+        throw new Error("Failed to Add Booking")
     }
 
     return await response.json()
