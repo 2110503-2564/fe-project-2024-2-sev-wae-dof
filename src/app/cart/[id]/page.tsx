@@ -9,6 +9,7 @@ import { Suspense } from "react";
 import editBooking from "@/libs/editBooking";
 import dayjs, { Dayjs } from "dayjs";
 import DateReserve from "@/components/DateReserve";
+import { useRouter } from "next/navigation";
 
 export default function EditPage() {
     const params = useParams();
@@ -18,6 +19,7 @@ export default function EditPage() {
     const [booking, setBooking] = useState<BookingJson | null>(null);
     const [editDate, setEditDate] = useState<Dayjs | null>(null);
     const [loading, setLoading] = useState(true);
+    const router = useRouter();
 
     useEffect(() => {
         async function fetchData() {
@@ -41,18 +43,13 @@ export default function EditPage() {
                         <p className="text-lg text-gray-600">Loading ... <LinearProgress /></p>
                     ) : (
                         <Suspense fallback={<p>Loading ... <LinearProgress /></p>}>
-                            <h1>Edit Page</h1>
-                            {id ? <p>Editing item with ID: {id}</p> : <p>No ID provided</p>}
-
-                            <div className="text-md text-left text-gray-600">{booking?.data[0].campground.name}</div>
-
                             <div>
                                 <div className="text-md text-left text-gray-600">Edit Check-In Date</div>
                                 <DateReserve onDateChange={(value:Dayjs)=>{setEditDate(value)}}/>
                             </div>
 
                             <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2 
-                            text-white shadow-sm" onClick={updateBooking}>Edit Booking</button>
+                            text-white shadow-sm" onClick={()=>{updateBooking; router.push("/cart"); }}>Edit Booking</button>
 
                 </Suspense>
             )}
