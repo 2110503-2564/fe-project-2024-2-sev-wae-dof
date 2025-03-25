@@ -38,13 +38,7 @@ export default function Reservations(){
 
     const makeReservation = () => {
         if(session?.user.token && pickupCampgroung && checkInDate && checkOutDate){
-            const item:ReservationItem = {
-                campgroundId:pickupCampgroung,
-                nights : checkOutDate.diff(checkInDate,'day'),
-                campingDate : dayjs(checkInDate).format('YYYY/MM/DD'),
-            }
             booking(session.user.token,pickupCampgroung,dayjs(checkInDate).format('YYYY/MM/DD'),checkOutDate.diff(checkInDate,'day'));
-            dispatch(addReservation(item))
         }
 
     }
